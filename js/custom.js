@@ -1,4 +1,4 @@
-var userAge = confirm('Вам есть 18 лет?');
+/*var userAge = confirm('Вам есть 18 лет?');
 var userSmoke = confirm('Вы курите?');
 
 if (userAge == false && userSmoke == false) {
@@ -9,4 +9,16 @@ if (userAge == false && userSmoke == false) {
     alert('Молодец, не надо');
 }  else if (userAge == true && userSmoke == true) {
     alert('Ну и зря!');
-}
+}*/
+
+
+var firstValue = prompt('Введите первое значение');
+var secondValue = prompt('Введите второе значение');
+
+if (firstValue > secondValue) {
+    alert(firstValue + ' больше, чем ' + secondValue);
+} else if (firstValue < secondValue) {
+    alert(secondValue + ' больше, чем ' + firstValue);
+} else {
+   alert('Значения равны');
+} 
