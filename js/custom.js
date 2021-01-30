@@ -1,18 +1,19 @@
-/*var userAge = confirm('Вам есть 18 лет?');
-var userSmoke = confirm('Вы курите?');
+var userAge = prompt('Сколько лет?');
+var userSmoke = confirm('Куришь?');
 
-if (userAge == false && userSmoke == false) {
+if (userAge < 1) {
+    alert('Неверный возраст');
+}  else if (userAge < 18 && userSmoke == false) {
     alert('Так держать!');
-}  else if (userAge == false && userSmoke == true) {
+}  else if (userAge < 18 && userSmoke == true) {
     alert('Маме расскажу'); 
-}  else if (userAge == true && userSmoke == false) {
+}  else if (userAge >= 18 && userSmoke == false) {
     alert('Молодец, не надо');
-}  else if (userAge == true && userSmoke == true) {
+}  else if (userAge >= 18 && userSmoke == true) {
     alert('Ну и зря!');
-}
+}  
 
-
-var firstValue = prompt('Введите первое значение');
+/*var firstValue = prompt('Введите первое значение');
 var secondValue = prompt('Введите второе значение');
 
 if (firstValue > secondValue) {
@@ -21,7 +22,7 @@ if (firstValue > secondValue) {
     alert(secondValue + ' больше, чем ' + firstValue);
 } else {
    alert('Значения равны');
-}*/
+}
 
 var kmDistance = prompt('Введите расстояние в километрах');
 var ftDistance = prompt('Введите расстоянине в футах');
@@ -34,7 +35,7 @@ if (smDistance > newValueFt) {
     alert(ftDistance + ' футов больше, чем ' + kmDistance + ' км');
 }   else if (newValueFt === smDistance) {
     alert('Расстояние равно');
-}
+}*/
 
 
 
