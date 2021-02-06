@@ -1,8 +1,8 @@
-var userAge = prompt('Сколько лет?');
+/*var userAge = prompt('Сколько лет?');
 var userSmoke = confirm('Куришь?');
 
 if (userAge < 1) {
-    alert('Неверный возраст');
+    alert('Неверный возраст'); 
 }  else if (userAge < 18 && userSmoke == false) {
     alert('Так держать!');
 }  else if (userAge < 18 && userSmoke == true) {
@@ -13,7 +13,7 @@ if (userAge < 1) {
     alert('Ну и зря!');
 }  
 
-/*var firstValue = prompt('Введите первое значение');
+var firstValue = prompt('Введите первое значение');
 var secondValue = prompt('Введите второе значение');
 
 if (firstValue > secondValue) {
@@ -36,6 +36,17 @@ if (smDistance > newValueFt) {
 }   else if (newValueFt === smDistance) {
     alert('Расстояние равно');
 }*/
+
+function isLannisterSoldier(color, lion) {
+    if ((color === 'red' && lion === null) || lion === 'lion') {
+        alert(true + ' солдат распознан!');
+    } else {
+        alert(false + ' солдат не распознан...');
+    }
+}
+
+isLannisterSoldier('red', 'lion');
+isLannisterSoldier('blue', null);
 
 
 
