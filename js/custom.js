@@ -35,7 +35,7 @@ if (smDistance > newValueFt) {
     alert(ftDistance + ' футов больше, чем ' + kmDistance + ' км');
 }   else if (newValueFt === smDistance) {
     alert('Расстояние равно');
-}*/
+}
 
 function isLannisterSoldier(color, lion) {
     if ((color === 'red' && lion === null) || lion === 'lion') {
@@ -46,7 +46,77 @@ function isLannisterSoldier(color, lion) {
 }
 
 isLannisterSoldier('red', 'lion');
-isLannisterSoldier('blue', null);
+isLannisterSoldier('blue', null);*/
 
+
+console.log('Цикл for');
+
+for (var i = 1; i < 11; i++) { 
+    console.log('Умножение на 1 - от 1 до 10 = ', i * 1);
+}
+
+console.log('***********');
+
+for (var i = 1; i < 11; i++) { 
+    console.log('Умножение на 2 - от 1 до 10 = ', i * 2);
+}
+
+console.log('***********');
+
+for (var i = 1; i < 11; i++) { 
+    console.log('Умножение на 3 - от 1 до 10 = ', i * 3);
+}
+
+console.log('***********');
+
+for (var i = 1; i < 11; i++) { 
+    console.log('Умножение на 4 - от 1 до 10 = ', i * 4);
+}
+
+console.log('***********');
+
+for (var i = 1; i < 11; i++) { 
+    console.log('Умножение на 5 - от 1 до 10 = ', i * 5);
+}
+
+console.log('Цикл while');
+
+var i = 0;
+while (i < 10) {
+  i++;
+  console.log('Умножение на 6 - от 1 до 10 = ', i * 6);
+}
+
+console.log('***********');
+
+var i = 0;
+while (i < 10) {
+  i++;
+  console.log('Умножение на 7 - от 1 до 10 = ', i * 7);
+}
+
+console.log('***********');
+
+var i = 0;
+while (i < 10) {
+  i++;
+  console.log('Умножение на 8 - от 1 до 10 = ', i * 8);
+}
+
+console.log('***********');
+
+var i = 0;
+while (i < 10) {
+  i++;
+  console.log('Умножение на 9 - от 1 до 10 = ', i * 9);
+}
+
+console.log('***********');
+
+var i = 0;
+while (i < 10) {
+  i++;
+  console.log('Умножение на 10 - от 1 до 10 = ', i * 10);
+}
 
 
