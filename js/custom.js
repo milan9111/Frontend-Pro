@@ -95,3 +95,4 @@ var arrNumber = [1, 2, 3, 4, 5];
 var arrNumberNew = arrNumber.slice(0, 3);
 console.log(arrNumberNew); 
 
+
