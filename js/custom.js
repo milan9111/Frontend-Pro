@@ -58,5 +58,40 @@ for (var i = 1; i < 11; i++) {
     }
 }*/
 
+//-------------------------------------------------
 
+var arrPlusEnd = ['a', 'b', 'c'];
+arrPlusEnd.push(1, 2, 3);
+console.log(arrPlusEnd); 
+
+//-------------------------------------------------
+
+var arrPlusStart = [1, 2, 3];
+arrPlusStart.unshift(4, 5, 6);
+console.log(arrPlusStart);
+
+//-------------------------------------------------
+
+var arrSelectFirst = ['js', 'css', 'jq'];
+document.write(arrSelectFirst[0] + '</br>');
+
+//-------------------------------------------------
+
+var arrSelectLast = ['js', 'css', 'jq'];
+document.write(arrSelectFirst[2] + '</br>');
+
+//------ИЛИ, если большой массив-------------------
+
+function selectLastItem() {
+    var arrSelectLast = ['js', 'css', 'jq'];
+    return arrSelectLast[arrSelectLast.length - 1];
+}
+
+document.write(selectLastItem() + '</br>');
+
+//-------------------------------------------------
+
+var arrNumber = [1, 2, 3, 4, 5];
+var arrNumberNew = arrNumber.slice(0, 3);
+console.log(arrNumberNew); 
 
