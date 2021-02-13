@@ -56,7 +56,7 @@ for (var i = 1; i < 11; i++) {
     for (var j = 1; j < 11; j++) {
         console.log(i + ' * ' + j + ' = ' + i * j);
     }
-}*/
+}
 
 //-------------------------------------------------
 
@@ -93,6 +93,8 @@ document.write(selectLastItem() + '</br>');
 
 var arrNumber = [1, 2, 3, 4, 5];
 var arrNumberNew = arrNumber.slice(0, 3);
-console.log(arrNumberNew); 
+console.log(arrNumberNew);*/
+
+
 
 
