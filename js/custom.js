@@ -95,6 +95,42 @@ var arrNumber = [1, 2, 3, 4, 5];
 var arrNumberNew = arrNumber.slice(0, 3);
 console.log(arrNumberNew);*/
 
+//-------------------------------------------------
+
+var arrString = ['a', 'b', 'c'];
+var arrNumber = [1, 2, 3];
+var arrStringAndNumber = arrString.concat(arrNumber);
+console.log(arrStringAndNumber);
+
+//-------------------------------------------------
+
+var arrNumbersOne = [1, 2, 3]; 
+arrNumbersOne.reverse();
+console.log(arrNumbersOne);
+
+//-------------------------------------------------
+
+var arrNumbersTwo = [3, 4, 1, 2, 7];
+arrNumbersTwo.sort();
+console.log(arrNumbersTwo);
+
+//-------------------------------------------------
+
+var arrAllNumbers = [3, 4, 1, 2, 7];
+function arrEvenNumbers(value, index, array) {
+    if (value % 2 == 0) {
+        return true;
+    } else {
+        return false; 
+    }
+}
+var result = arrAllNumbers.filter(arrEvenNumbers);
+console.log(result);
+
+
+
+
+
 
 
 
