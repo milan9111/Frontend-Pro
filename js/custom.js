@@ -14,7 +14,7 @@ console.log(squareRootNumbers);
 //---------------------------------------------------------------------------
 
 var arr = [1, 4, 2, 2, 1, 2, 6];
-var number = 0;
+var number = 1;
 var result = arr.reduce(function(previousValue, item, index, array) {
 	if (previousValue > 10) {
 		console.log(number);
