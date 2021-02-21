@@ -1,27 +1,46 @@
-var numbers = [-17, -16, -2, 4, 9, 25, 33, 54, 71, 256]; 
-function positive(item, index, array){
-    return item > 0
-};
+var abc = 'aaa bbb ccc'; 
+var bbb = abc.substring(4,7);
+console.log(bbb);
 
-var positiveNumbers = numbers.filter(positive);
+var bbbTwo = abc.substr(4, 3);
+console.log(bbbTwo);
 
-var squareRootNumbers = positiveNumbers.map(function(item, index, array) {
-	return Math.sqrt(item);
-});
+var bbbThree = abc.slice(4,7);
+console.log(bbbThree);
 
-console.log(squareRootNumbers);
+//----------------------------------------------
 
-//---------------------------------------------------------------------------
+var jsStudy = 'я учу javascript!';
+jsStudy = jsStudy.charAt(0).toUpperCase() + jsStudy.slice(1, 17);
+console.log(jsStudy);
 
-var arr = [1, 4, 2, 2, 1, 2, 6];
-var number = 1;
-var result = arr.reduce(function(previousValue, item, index, array) {
-	if (previousValue > 10) {
-		console.log(number);
-		return;
-	} else {
-		number++;
-		return previousValue + item;
-	}
-}); 
+//----------------------------------------------
+
+
+var text = 'var_test_text';
+
+function edit(a) {
+	var a = a.split('_');  // преобразовываем в массивы
+	var b = a.splice(0, 1); // вырезаем первый массив  
+	var bString = b.join(''); // преобразовываем первый массив в строку
+	for (var i= 0; i < a.length; i++){
+		a[i] = a[i].charAt(0).toUpperCase() + a[i].slice(1);  
+	  } // делаем uppercase к первым буквам второго и третьего массива 
+	var aString = a.join(''); // преобразовываем второй и третий массивы в строки 
+	var editString = bString.concat(aString); // объеденяем первую строку со второй и третей 
+	console.log(editString);	
+}
+
+edit(text);
+
+
+
+//--------------------------------------------------
+
+var x = Math.random();
+console.log(x * 50);
+
+// ИЛИ, если надо целое число: 
  
+var y = Math.random(); 
+console.log(Math.round(x * 50));
