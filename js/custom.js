@@ -1,22 +1,13 @@
-
-var elem = document.getElementById('elem');
-
-function func(surname, name) {
-alert(this.value + ', ' + surname + ' ' + name);
+const secret = {
+    "!": [17],
+    " ": [5,10],
+    "e": [1,15],
+    "o": [4,8],
+    "h": [0],
+    "l": [2,3,13,14,16],
+    "f": [6],
+    "r": [7],
+    "m": [9],
+    "H": [11],
+    "i": [12],
 }
-var funcName = func.bind(elem);
-
-funcName('Иванов', 'Иван');
-funcName('Петров', 'Петр');
-
-//-------------------------------------------------
-
-var elem = document.getElementById('elem');
-
-function funcHI(text) {
-alert(this.value + text);
-}
-
-funcHI.call(elem, ' <--- value инпута');
-
-//-------------------------------------------------
