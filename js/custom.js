@@ -11,3 +11,18 @@ const secret = {
     "H": [11],
     "i": [12],
 }
+
+var result = [];
+var secretMap = {};
+
+Object.keys(secret).forEach(key => {
+  secret[key].forEach(secret => {
+   secretMap[secret] = key
+  })
+})
+
+Object.keys(secretMap).forEach((key, index) => {
+  result.push(secretMap[index]);
+})
+
+document.write(result.join(''));
