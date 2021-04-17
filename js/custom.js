@@ -1,21 +1,65 @@
-var params = 'scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,titlebar=no,width=500,height=500';
-var newWin = window.open('', 'newWin', params);
-newWin.document.write('<title>Frontend</title>');
-newWin.document.write('<head><link rel="stylesheet" href="./style/newWin.css"></head>');
-newWin.document.write('<body></body>');
+var firstInput = document.querySelector('.first');
+var secondInput = document.querySelector('.second');
+var thirdInput = document.querySelector('.third');
+var btn = document.querySelector('.btn'); 
+var setSumm = document.querySelector('.summ');
 
-var x;
-var y;
-intervalID = window.setInterval(moveMent, 1000);
-function moveMent() {
-    x = Math.round(Math.random() * window.outerWidth);
-    y = Math.round(Math.random() * window.outerHeight);
-    newWin.moveTo(x,y);
-    newWin.focus();
+var obj = {
+   firstInputValue : null,
+   secondInputValue : null,
+   thirdInputValue : null,
 }
 
-setTimeout(function closeWin() { 
-    clearInterval(intervalID);
-    newWin.close();
-}, 15000);
+firstInput.addEventListener('input', (event) => {
+   if (event.target.value !== "" && Number(event.target.value)){
+      obj.firstInputValue = event.target.value;
+   } else {
+      firstInput.style.border = '2px solid red';
+      return false;
+   } 
+});
 
+secondInput.addEventListener('input', (event) => {
+   if (event.target.value !== "" && Number(event.target.value)){
+      obj.secondInputValue = event.target.value;
+   } else {
+      secondInput.style.border = '2px solid red';
+      return false;
+   }
+});
+
+thirdInput.addEventListener('input', (event) => {
+   if (event.target.value !== "" && Number(event.target.value)){
+      obj.thirdInputValue = event.target.value;
+   } else {
+      thirdInput.style.border = '2px solid red';
+      return false;
+   } 
+});
+
+
+btn.addEventListener('click', function calcSumm () {
+   var summ = 0;
+   for(key in obj) {
+     summ += Number(obj[key])
+   } 
+   setSumm.value = summ;
+   setSumm.style.border = '2px solid green'; 
+})
+
+
+
+var setNumbers = document.querySelector('.number');
+setNumbers.addEventListener('blur', calcResult);
+
+function calcResult() {
+	var sum = 0;
+	var numbersString = setNumbers.value;
+	var arrNumbers = numbersString.split('');
+  	for (var i = 0; i < arrNumbers.length; i++) {
+		sum += + arrNumbers[i];
+	}
+	var getSumm = document.querySelector('.result');
+	getSumm.value = sum;
+  getSumm.style.border = '2px solid green';
+}    
