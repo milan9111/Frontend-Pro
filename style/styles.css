@@ -1,82 +1,26 @@
 body {
-    margin: 0;
+    font-family: 'Roboto', sans-serif;
 }
 
-.quiz {
-    margin: 0 auto;
+.container {
     width: 600px;
+    margin: 0 auto;
+    padding-top: 25px;
 }
 
-.quiz-questions {}
-
-.quiz-questions-item {
-    margin-bottom: 20px;
+.input-distance {
+    padding-bottom: 25px;
 }
 
-.quiz-questions-item-question {
-    margin-bottom: 20px;
-    font-size: 20px;
+.choice-tariffs {
+    padding-bottom: 25px;
 }
 
-.quiz-questions-item-answers {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+.choice-addservice {
+    padding-top: 10px;
 }
 
-
-.quiz-results {
-    margin-bottom: 20px;
-    display: none;
-}
-
-.quiz-results-item {
-    margin-bottom: 20px;
-}
-
-.quiz-results-item-question {
-    margin-bottom: 20px;
-    font-size: 20px;
-}
-
-.quiz-results-item-answers {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.quiz-indicator {
-    padding-bottom: 20px;
-}
-
-.btn-next {
-
-}
-
-.btn-restart {
-    display: none;
-}
-
-.questions--hidden {
-    display: none;
-}
-.indicator--hidden {
-    display: none;
-}
-.indicator--visible {
-    display: block;
-}
-.btn-next--hidden {
-    display: none;
-}
-.btn-restart--visible {
-    display: block;
-}
-
-.answer--invalid {
+.calculated-cost-results {
+    padding: 0 5px;
     color: red;
-}
-
-.answer--valid {
-    color: green;
 }
