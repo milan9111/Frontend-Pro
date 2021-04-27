@@ -5,18 +5,69 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Taxi</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">    
+    <title>Расчёт калорий</title>
     <link rel="stylesheet" href="./style/styles.css">
     </head>
 
-    <body>
-    
+<body>
+    <div class="container">
+        <h2>Расчёт калорий (формула Миффлина - Сан-Жеора)</h2>
+ 
+            <section class="active_block block_1">
+                <h3>Выберите ваш пол:</h3>
+                <label><input type="radio" name="gender" value="male" class="male">Male</label>
+                <label><input type="radio" name="gender" value="female" class="female">Female</label>
+            
+            
+                <hr>
+                <h3>Введите ваш рост:</h3>
+                <label><input type="range" class="height" min="100" max="220"></label><span class="show-height"></span> <span>см</span>
+            
+                <hr>
+                <h3>Введите ваш текущий вес:</h3>
+                <label><input type="text" class="current-weight"></label>
+            
+                <hr>
+                <h3>Введите ваш желаемый вес:</h3>
+                <label><input type="text" class ="desired-weight"></label>
+            
+                <div>
+                    <button data-page='next2'>Next</button>
+                </div>
+            </section>
+            
+            <section class="block_2">
+                <h3>Выберите вашу активность:</h3>
+                <label><input type="range" class="input-activity" min="1" max="4"></label><span><img src ="images/smilingface.png" class="show-input-activity" alt=""></span>
+            
+                <div>
+                    <button data-page='prev1'>Prev</button>
+                    <button data-page='next3'>Next</button>
+                </div>
+            
+            </section>
+            
+            <section class="block_3">
+                <h3>Выберите желаемый результат:</h3>
+                <label><input type="range" class="desired-body-shape" min="1" max="4"></label><span><img src ="images/smiling.png" class="show-desired-body-shape" alt=""></span>
+            
+                <div>
+                    <button data-page='prev2'>Prev</button>
+                    <button data-page='next4'>Next</button>
+                </div>
+            
+            </section>
+            
+            <section class="block_4 results">
+                <h3>Вам необходимо принимать не больше <span class="result-show-calories"></span> кКал в день.</h3>
+            
+                <div>
+                    <button data-page='prev3'>Prev</button>
+                </div>
+            </section>
+    </div>
+
    
-        
-        
-        
         <script src="js/custom.js"></script>
     </body>
 

@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+* {
+    outline: 0 !important;
+  }
+
+button,
+input {
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+}
+
+body {
+    background-color: #fff;
+    font-family: 'Lato', sans-serif;
+}
+
+section {
+    display: none;
+}
+
+.container {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.container h2 {
+    text-align: center;
+}
+.active_block {
+    display: block;
+    background-color: rgb(206, 200, 200);
+    margin-top: 15%;
+    margin: 0 auto;
+    max-width: 60%;
+    padding: 20px 40px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+}
+
+.show-input-activity,
+.show-desired-body-shape {
+    width: 75px;
+    height: 75px;
+    margin-left: 100px;
+}
+
+button {
+    margin-top: 30px;
+    margin-right: 20px;
+    padding: 5px 15px;
+}
+
+.result-show-calories {
+    color: red;
+}
