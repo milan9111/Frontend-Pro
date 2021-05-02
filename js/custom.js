@@ -1,162 +1,183 @@
-var blockOne = document.querySelector('.block_1');
-var blockTwo = document.querySelector('.block_2');
-var blockThree = document.querySelector('.block_3');
-var blockFour = document.querySelector('.block_4');
+showAvatar();
+
+async function showAvatar() {
+
+    try {
+            let data;
+            let response = await fetch('https://api.jsonbin.io/b/608e6a2a8a409667ca02ef20');
+            data = await response.json();
 
 
-var inputMale = document.querySelector('.male');
-var inputFemale = document.querySelector('.female');
-var inputHeight = document.querySelector('.height');
-var inputCurrentWeight = document.querySelector('.current-weight');
-var inputDesiredWeight = document.querySelector('.desired-weight');
-var inputActivity = document.querySelector('.input-activity');
-var InputDesiredBodyShape = document.querySelector('.desired-body-shape');
+
+let localResults = {   // объект, где будут храниться ответы отвечающего 
+    
+};
 
 
-var showHeight = document.querySelector('.show-height');
-var showInputActivity = document.querySelector('.show-input-activity');
-var showDesiredBodyShape = document.querySelector('.show-desired-body-shape');
-var resultShowCalories = document.querySelector('.result-show-calories');
+const quiz = document.getElementById('quiz');
+const questions = document.getElementById('questions');
+const indicator = document.getElementById('indicator');
+const results = document.getElementById('results');
+const btnNext = document.getElementById('btn-next');
+const btnRestart = document.getElementById('btn-restart');
+const btnResult = document.getElementById('btn-result');
+const btnClose = document.getElementById('btn-close');
+const sectionInputName = document.querySelector('.section-input-name');
+const sectionQuiz = document.querySelector('.section-quiz');
+const inputName = document.querySelector('.input-name');
+const btnInputName = document.querySelector('.btn-input-name');
+const sectionResult = document.querySelector('.section-result');
+const sectionResultName = document.querySelector('.section-result-name');
+const sectionResultPoints = document.querySelector('.section-result-points');
 
 
-var gender = 0;
-var heightValue = 0;
-var currentWeightValue = 0;
-var desiredWeightValue = 0;
-var activityValue = 0;
-var desiredBodyShapeValue = 0;
-var result = 0;
+let nameUser;
 
-
-var buttons = document.getElementsByTagName('button');
-
-for(var i = 0; i < buttons.length; i++) {
-  buttons[i].addEventListener('click', getSelectionButton);
-  function getSelectionButton(event) {
-    if (event.target.dataset.page === 'next2') {
-      blockOne.classList.remove('active_block');
-      blockTwo.classList.add('active_block');
-    } else if (event.target.dataset.page === 'next3') {
-      blockTwo.classList.remove('active_block');
-      blockThree.classList.add('active_block');
-    } else if (event.target.dataset.page === 'next4') {
-      blockThree.classList.remove('active_block');
-      blockFour.classList.add('active_block');
-    } else if (event.target.dataset.page === 'prev3') {
-      blockFour.classList.remove('active_block');
-      blockThree.classList.add('active_block');
-    } else if (event.target.dataset.page === 'prev2') {
-      blockThree.classList.remove('active_block');
-      blockTwo.classList.add('active_block');
-    } else if (event.target.dataset.page === 'prev1') {
-      blockTwo.classList.remove('active_block');
-      blockOne.classList.add('active_block');
-    }
-  }
-}
-
-
-inputMale.addEventListener('click', setGender);
-inputFemale.addEventListener('click', setGender);
-function setGender(event) {
-  if(event.target.value === 'male') {
-    gender = 5;
-  } else if (event.target.value === 'famale'){
-    gender = -161;
-  } 
-  calcResult();
-}
-
-setRangeHeight();
-inputHeight.addEventListener('change', setRangeHeight); 
-function setRangeHeight () { 
-    showHeight.innerText = inputHeight.value;
-    heightValue = inputHeight.value;
+inputName.addEventListener('change', () => {
+    nameUser = inputName.value;
     calcResult();
-}
+})
 
-inputCurrentWeight.addEventListener('input', setTextWeight);
-function setTextWeight (event) { 
-  if(this.value = this.value.replace(/[^\d]/g, '')){
-    currentWeightValue = event.target.value;
-  }
-  calcResult();
-}
 
-inputDesiredWeight.addEventListener('input', setTextDesireWeight);
-function setTextDesireWeight (event) { 
-  if(this.value = this.value.replace(/[^\d]/g, '')){
-    desiredWeightValue = event.target.value;
-  }
-  calcResult();
-}
+btnInputName.addEventListener('click', (event) => {
+    if (event.target) {
+        sectionInputName.classList.remove('active-block');
+        sectionQuiz.classList.add('active-block');
+    } 
+})
 
-inputActivity.addEventListener('change', setInputActivity);
-function setInputActivity() {
-  switch(inputActivity.value) 
-    {
-      case '1':
-        activityValue = 1.2;
-        showInputActivity.src = 'images/bed.png';
-        break;
+
+const renderQuestions = (index) => { //функция рендер вопросов
+    renderIndicator(index + 1);
+
+    questions.dataset.currentStep = index;
+
+    const renderAnawers = () => data[index].answers // рендер ответа к вопросу 
+    .map((answer) => `
+            <li>
+            <label><input class="answer-input" type="radio" name=${index} value=${answer.id}>${answer.value}</label>
+            </li>
+    `)
+    .join('');
+    // рендер вопроса
+    questions.innerHTML = `    
+    <div class="quiz-questions-item">
+                    <div class="quiz-questions-item-question">${data[index].questions}</div>
+                    <ul class="quiz-questions-item-answers">${renderAnawers()}</ul>
+              </div>
+    `;
+};
+
+const renderResults = () => { //функция рендер ответов
     
-      case '2':
-        activityValue = 1.375;
-        showInputActivity.src = 'images/chair.png';
-        break;
+    let content = '';
+
+    const getClassname = (answer, questionIndex) => { // функция добавления цвета к правильным и неправильным ответам
+        let classname = '';
+
+        if (!answer.correct && answer.id === localResults[questionIndex]) { //если ответ неправильный и пользователь его выбрал
+            classname = 'answer--invalid'; //неправильный вариант ответа
+        } else if (answer.correct) { // если ответ правильный 
+            classname = 'answer--valid'; //правильный вариант ответа
+        }
+
+        return classname;
+    };  
     
-      case '3':
-        activityValue = 1.55;
-        showInputActivity.src = 'images/walking.png';
-        break;
+    const getAnswers = (questionIndex) => data[questionIndex].answers 
+      .map((answer) => `<li class=${getClassname(answer, questionIndex)}>${answer.value}</li>`) // функция перебора ответов 
+      .join('');
+    
 
-        case '4':
-        activityValue = 1.725;
-        showInputActivity.src = 'images/running.png'; 
-        break;
+    data.forEach((question, index) => { // добавление ответов 
+        content +=  `
+          <div class="quiz-results-item">
+                <div class="quiz-results-item-question">${question.questions}</div> 
+                <ul class="quiz-results-item-answers">${getAnswers(index)}</ul>
+          </div>
+        `; // вывод вопроса и выбранного ответа
+    });
 
-        default:
-        showInputActivity.src = 'images/smilingface.png';  
-        activityValue = 1.375; 
+    results.innerHTML = content;
+};
+
+const renderIndicator = (currentStep) => { //функция рендер индикатора вопросов
+    indicator.innerHTML = `${currentStep}/${data.length}`;
+};
+
+quiz.addEventListener('change', (event) => { //событие на отмечание ответа
+    if(event.target.classList.contains('answer-input')) {
+        localResults[event.target.name] = event.target.value; // передача данных ключ:значение в localResults
+        btnNext.disabled = false;
+
+        
     }
-    calcResult();
-  }
+});
 
+quiz.addEventListener('click', (event) => { //кнопки Вперед, Рестарт
+    if(event.target.classList.contains('btn-next')) { // ивент на кнопку Вперед
+        const nextQuestionIndex = Number(questions.dataset.currentStep) + 1;
+        document.body.style.backgroundImage = `url(source/img/${Math.floor((Math.random()*39)+1)}.jpg)`; 
+        
 
-InputDesiredBodyShape.addEventListener('change', setInputDesiredBodyShape);
-function setInputDesiredBodyShape() {
-  switch(InputDesiredBodyShape.value) 
-    {
-      case '1':
-        desiredBodyShapeValue = -800;
-        showDesiredBodyShape.src = 'images/womanrunning.png';
-        break;
-    
-      case '2':
-        desiredBodyShapeValue = -200;
-        showDesiredBodyShape.src = 'images/biking.png';
-        break;
-    
-      case '3':
-        desiredBodyShapeValue = 200;
-        showDesiredBodyShape.src = 'images/biceps.png';
-        break;
+        
 
-        case '4':
-        desiredBodyShapeValue = 600;
-        showDesiredBodyShape.src = 'images/lifting.png'; 
-        break;
+        
 
-        default:
-        showDesiredBodyShape.src = 'images/smiling.png'; 
-        desiredBodyShapeValue = -200; 
+        
+        // проверка на переход к следующему вопросу
+
+        if (data.length === nextQuestionIndex) {  //если вопросы закончились -- результат
+            questions.classList.add('questions--hidden'); //добавляем классы к html элементам в results
+            indicator.classList.add('indicator--hidden'); //добавляем классы к html элементам в results
+            results.classList.add('indicator--visible'); //добавляем классы к html элементам в results
+            btnNext.classList.add('btn-next--hidden'); //добавляем классы к html элементам в results
+            btnRestart.classList.add('btn-restart--visible'); //добавляем классы к html элементам в results
+            btnResult.classList.add('btn-restart--visible');//добавляем классы к html элементам в results
+            document.body.style.backgroundImage = 'url(source/img/background/imgFinish.jpg)';
+            renderResults();
+        } else {
+            renderQuestions(nextQuestionIndex); // если нет -- следующий вопрос 
+        }
+
+        btnNext.disabled = true;
     }
-    calcResult();
+
+    if(event.target.classList.contains('btn-restart')) { // ивент на кнопку Рестарт
+
+        let localResults = {}; // обнуляем результаты, раннее записанные в объект
+        results.innerHTML = ''; //  обнуляем результаты в html
+
+        questions.classList.remove('questions--hidden');  // удаляем классы у html элементов
+        indicator.classList.remove('indicator--hidden'); // удаляем классы у html элементов
+        results.classList.remove('indicator--visible'); // удаляем классы у html элементов
+        btnNext.classList.remove('btn-next--hidden'); // удаляем классы у html элементов
+        btnRestart.classList.remove('btn-restart--visible'); // удаляем классы у html элементов
+        btnResult.classList.remove('btn-restart--visible'); // удаляем классы у html элементов
+ 
+        renderQuestions(0); // возврат к первому вопросу
+    }
+
+    if(event.target.classList.contains('btn-result')) {
+        sectionQuiz.classList.remove('active-block');
+        sectionResult.classList.add('active-block');
+    }
+
+    
+});
+
+renderQuestions(0);
+
+btnClose.addEventListener('click', () => {
+    window.close();
+})
+
+function calcResult() {
+    //let result = ; 
+    sectionResultName.innerHTML = nameUser;
   }
 
-  function calcResult() {
-    var result = Math.round(((10 * currentWeightValue + 6.25 * heightValue + gender) * activityValue) + desiredBodyShapeValue); 
-    resultShowCalories.innerHTML = result;
+}  catch(err) {
+    console.log(err);
   }
-  
-  
+}
