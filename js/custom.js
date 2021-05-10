@@ -1,26 +1,15 @@
-let btn = document.getElementsByTagName('button')[0];
-let text = document.getElementsByTagName('div');
-let textResult;
+let inputList = document.querySelectorAll('input');
 
-btn.addEventListener('click', () => {
-    for(let item of text) {
-        textResult = `${item.innerHTML.substr(0, 10)}...`; 
-        item.innerHTML = textResult;
-    }
-})
-
-//=====================================================================
-
-
-let box = document.querySelector('.box');
-let colors =  ['red', 'green', 'blue'];
-let index = 0;
-
-setInterval(() => {
-	box.style.color = `${colors[index++]}`;
-    if (index >= colors.length) {
-        index = 0;
-    } 
-}, 1000)
-
-
+for (let i = 0; i < inputList.length; i++) {
+    inputList[i].addEventListener('input', function() {
+        if (this.value = this.value.replace(/[^\d]/g, '')) {
+          this.nextElementSibling.focus();  
+        } 
+    });
+    inputList[i].addEventListener('keyup', function(event) {
+        if (event.key === "Backspace") {
+            this.previousElementSibling.focus();
+        }
+    });
+}
+    
