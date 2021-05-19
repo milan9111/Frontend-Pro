@@ -1,42 +1,30 @@
-let inputList = document.querySelectorAll('input');
 
 
-function setNumbers(nodeList) {
-    const numbersArray = getCookies(nodeList.length);
-    for (let i = 0; i < nodeList.length; i++) {
-        nodeList[i].value = numbersArray[i]
-        nodeList[i].addEventListener('input', function() {
-            if (this.value = this.value.replace(/[^\d]/g, '')) { 
-                setCookie(i,this.value, nodeList.length);
-                this.nextElementSibling.focus();  
-            } 
-        });
-    }    
+let newCookies = document.cookie;
+   if (!newCookies){
+   alert ('Добро пожаловать!')
+   updateCookie ('cookie created');
+   } else {
+    checkCookie();
+   }
+   
+   function updateCookie(text){
+   document.cookie = "name=CookieName";
+   document.cookie = `creationDate=${Date.parse(new Date())}`;
+   console.log(text)
+   }
+    
+   function checkCookie(){
+   let date = Date.parse(new Date());
+   let cookies = newCookies.split(';');  
+   let cookiesValue = Number(cookies[1].split('=')[1]);
+   let cookiesLive = (date - cookiesValue)/1000; 
+   if (cookiesLive >= 10){
+          alert('Нажмите, чтоб обновить куки');
+   }
+        updateCookie('cookie updated');
 }
 
-function delNumbers(nodeList) {
-    for (let i = 0; i < nodeList.length; i++) {
-        nodeList[i].addEventListener('keyup', function(event) {
-            if (event.key === "Backspace") {
-                setCookie(i, event.target.value, nodeList.length);
-                this.previousElementSibling.focus();
-            }
-        });
-    }
-}
-
-function setCookie(position, number, length){
-    let numbers = getCookies(length);
-    numbers[position] = number;
-    document.cookie = `cart=${numbers.join(',')}`;
-}
-
-function getCookies(length){
-    let numbersArray = document.cookie?.split('=')[1]?.split(',') || Array(length).fill(null);
-    return numbersArray;		
-}
-setNumbers(inputList);
-delNumbers(inputList);
 
 
 
