@@ -177,14 +177,14 @@ function timerShow () {
         count--;
         timerShowValue.innerHTML = count;
         if (count <= 15) {
-            timerShowValue.style.color = "yellow";
+            timerShowValue.style.color = 'yellow';
         }
         if (count <= 5) {
-            timerShowValue.style.color = "red";
+            timerShowValue.style.color = 'red';
         }
         if (count <= 0) {
             clearInterval(intervalId);
-            popUp.style.display = "block";
+            popUp.style.display = 'block';
             let darkLayer = document.createElement('div');
             darkLayer.classList = 'shadow';
             document.body.appendChild(darkLayer);
@@ -199,7 +199,8 @@ btnResultPopUp.addEventListener('click', (event)=> {
         sectionQuiz.classList.remove('active-block');
         sectionResult.classList.add('active-block');
         timer.style.visibility = 'hidden';
-        sectionResultTextTimeoff.innerHTML = "К сожалению, время закончилось :( Попробуйте еще!"
+        sectionResultTextTimeoff.innerHTML = 'К сожалению, время закончилось :( Попробуйте еще!';
+        sectionResultPoints.innerHTML = '0';
         } 
 });
    
